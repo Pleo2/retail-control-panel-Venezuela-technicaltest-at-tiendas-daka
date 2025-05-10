@@ -7,8 +7,8 @@ import { useExchangeRate } from './composables/useExchangeRate'
 import type { Product } from './core/infrastructure/interfaces/app/app.types'
 // SPC
 import ProductList from './components/ProductList.vue'
-import DashboardStats from './components/DashboardStats.vue'
-// import AppPagination from './components/ui/AppPagination.vue'
+import DashboardStats from './components/Stats.vue'
+import AppPagination from './components/AppPagination.vue'
 
 const {
   products: rawProducts,
@@ -98,10 +98,69 @@ const dataIsReady = computed(
       <pre v-if="rateError">{{ rateError.message }}</pre>
     </div>
 
-    <!-- Contenido Principal cuando los datos están listos -->
     <div v-else-if="dataIsReady">
-      <!-- Aquí irían los filtros y las estadísticas -->
       <DashboardStats :products="filteredProducts" />
+      <!-- SECCIÓN DE FILTROS -->
+      <div class="mb-6 p-4 bg-white rounded-lg shadow-md">
+        <h2 class="text-lg font-semibold text-gray-700 mb-3">Filtros</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+          <!-- Filtro por Categoría -->
+          <div>
+            <label for="category-filter" class="block text-sm font-medium text-gray-700 mb-1"
+              >Categoría:</label
+            >
+            <select
+              id="category-filter"
+              v-model="selectedCategory"
+              class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              :disabled="isLoadingCategories"
+            >
+              <option value="">Todas las categorías</option>
+              <option v-if="isLoadingCategories" value="" disabled>Cargando categorías...</option>
+              <template v-else-if="categories">
+                <option
+                  v-for="category in categories"
+                  :key="category"
+                  :value="category"
+                  class="capitalize"
+                >
+                  {{ category }}
+                </option>
+              </template>
+            </select>
+          </div>
+
+          <!-- Filtro por Precio Mínimo -->
+          <div>
+            <label for="price-min-filter" class="block text-sm font-medium text-gray-700 mb-1"
+              >Precio Mín. (USD):</label
+            >
+            <input
+              id="price-min-filter"
+              type="number"
+              v-model.number="priceRangeMin"
+              placeholder="Ej: 10"
+              min="0"
+              class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+
+          <!-- Filtro por Precio Máximo -->
+          <div>
+            <label for="price-max-filter" class="block text-sm font-medium text-gray-700 mb-1"
+              >Precio Máx. (USD):</label
+            >
+            <input
+              id="price-max-filter"
+              type="number"
+              v-model.number="priceRangeMax"
+              placeholder="Ej: 100"
+              min="0"
+              class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+        </div>
+      </div>
       <ProductList :products="paginatedProducts" :exchange-rate="currentExchangeRate" />
 
       <AppPagination
@@ -113,3 +172,4 @@ const dataIsReady = computed(
     </div>
   </div>
 </template>
+di
