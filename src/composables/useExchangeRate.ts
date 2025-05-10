@@ -11,5 +11,6 @@ export function useExchangeRate() {
         isLoading: exchangeRateQuery.isLoading,
         isError: exchangeRateQuery.isError,
         error: exchangeRateQuery.error,
+        isSuccess: exchangeRateQuery.isSuccess
     };
 }
