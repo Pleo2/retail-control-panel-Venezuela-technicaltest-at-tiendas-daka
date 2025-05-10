@@ -26,5 +26,4 @@ defineProps<Props>()
     <p class="text-xl text-gray-600">No se encontraron productos que coincidan con tus filtros.</p>
     <!-- You could add an image or an icon here -->
   </div>
-  
 </template>

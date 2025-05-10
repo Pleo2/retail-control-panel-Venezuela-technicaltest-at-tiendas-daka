@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import './global.css'
 import { ref, computed, watch, onMounted } from 'vue'
 import { useProducts } from './composables/useProducts'
 import { useCategories } from './composables/useCategories'
@@ -36,7 +36,7 @@ const dataIsReady = computed(
   () => productsSuccess.value && categoriesSuccess.value && rateSuccess.value,
 )
 
-const selectedCategory = ref<string>('')
+const selectedCategory = ref<string>(localStorage.getItem('preferredCategory') || '')
 const priceRangeMin = ref<number | null>(null)
 const priceRangeMax = ref<number | null>(null)
 const currentPage = ref<number>(1)
@@ -98,7 +98,7 @@ onMounted(() => {
       v-if="isLoadingProducts || isLoadingCategories || isLoadingRate"
       class="text-center py-10 bg-black"
     >
-      <p class="text-xl animate-pulse">Cargando Productos...</p>
+      <!-- <p class="text-xl animate-pulse">Cargando Productos...</p> -->
       <!-- Puedes añadir un spinner SVG o un componente de spinner aquí -->
     </div>
     <div
@@ -174,7 +174,13 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <ProductList :products="paginatedProducts" :exchange-rate="currentExchangeRate" />
+      <Transition name="fade" mode="out-in">
+        <ProductList
+          :key="currentPage + selectedCategory + priceRangeMin + priceRangeMax"
+          :products="paginatedProducts"
+          :exchange-rate="currentExchangeRate"
+        />
+      </Transition>
 
       <AppPagination
         v-if="totalPages > 1"
