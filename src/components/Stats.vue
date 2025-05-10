@@ -41,8 +41,8 @@ const stats = computed(() => [
 </script>
 
 <template>
-  <div class="bg-white/10 border-1 border-white/10 p-2 rounded-lg flex flex-col gap-2">
-    <h2 class="text-lg font-medium  text-white">Estadísticas</h2>
+  <div class="bg-white/10 border-1 border-white/10 p-2 rounded-lg flex flex-col gap-2 z-50">
+    <h2 class="text-lg font-medium text-white">Estadísticas</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div
         v-for="stat in stats"

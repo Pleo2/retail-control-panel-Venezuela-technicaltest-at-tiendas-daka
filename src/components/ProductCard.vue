@@ -27,7 +27,7 @@ const priceUSDFormatted = computed(() => {
   <div
     class="bg-white/20 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col"
   >
-    <div class="bg-white rounded-lg relative w-full h-48 sm:h-56">
+    <div class="bg-white opacity-80 rounded-lg relative w-full h-48 sm:h-56">
       <img
         :src="product.imageUrl"
         :alt="product.title"

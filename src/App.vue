@@ -91,10 +91,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container p-4">
+  <div class="container p-4 h-full mx-auto relative overflow-hidden rounded-lg z-0">
     <!-- Estados de Carga/Error Globales -->
     <div v-if="isLoadingProducts || isLoadingCategories || isLoadingRate" class="text-center py-10">
-      <!-- <p class="text-xl animate-pulse">Cargando Productos...</p> -->
+      <p class="text-xl animate-bounce">Cargando Productos...</p>
       <!-- Puedes añadir un spinner SVG o un componente de spinner aquí -->
     </div>
 
@@ -108,11 +108,14 @@ onMounted(() => {
       <pre v-if="rateError">{{ rateError.message }}</pre>
     </div>
 
-    <div v-else-if="dataIsReady" class="flex flex-col gap-6">
+    <div
+      v-else-if="dataIsReady"
+      class="flex flex-col gap-6"
+    >
       <DashboardStats :products="filteredProducts" />
       <!-- Filter Section -->
       <section
-        class="flex flex-col gap-2 bg-white/10 border-1 border-white/10 p-2 rounded-lg shadow-md"
+        class="flex flex-col gap-2 bg-white/10 border-1 border-white/10 p-2 rounded-lg shadow-md z-50"
       >
         <h2 class="text-lg font-medium text-gray-200">Filtrar Productos</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end bg-white/10 p-4 rounded-lg">
@@ -124,7 +127,7 @@ onMounted(() => {
             <select
               id="category-filter"
               v-model="selectedCategory"
-              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300  shadow-sm focus:bg-white/5  focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin"
+              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300 shadow-sm focus:bg-white/5 focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin cursor-pointer"
               :disabled="isLoadingCategories"
             >
               <option value="">Todas las categorías</option>
@@ -134,7 +137,7 @@ onMounted(() => {
                   v-for="category in categories"
                   :key="category"
                   :value="category"
-                  class="capitalize "
+                  class="capitalize"
                 >
                   {{ category }}
                 </option>
@@ -153,7 +156,7 @@ onMounted(() => {
               v-model.number="priceRangeMin"
               placeholder="Ej: 10"
               min="0"
-              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300  shadow-sm focus:bg-white/5  focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin"
+              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300 shadow-sm focus:bg-white/5 focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin cursor-pointer"
             />
           </div>
 
@@ -168,7 +171,7 @@ onMounted(() => {
               v-model.number="priceRangeMax"
               placeholder="Ej: 100"
               min="0"
-              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300  shadow-sm focus:bg-white/5  focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin"
+              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300 shadow-sm focus:bg-white/5 focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin cursor-pointer"
             />
           </div>
         </div>
