@@ -3,11 +3,11 @@ import { ref, computed, watch } from 'vue'
 import { useProducts } from './composables/useProducts'
 import { useCategories } from './composables/useCategories'
 import { useExchangeRate } from './composables/useExchangeRate'
-
+// types
+import type { Product } from './core/infrastructure/interfaces/app/app.types'
 // SPC
 import ProductList from './components/ProductList.vue'
-import type { Product } from './core/infrastructure/interfaces/app/app.types'
-// import DashboardStats from './components/DashboardStats.vue'
+import DashboardStats from './components/DashboardStats.vue'
 // import AppPagination from './components/ui/AppPagination.vue'
 
 const {
@@ -81,7 +81,10 @@ const dataIsReady = computed(
 <template>
   <div class="container mx-auto px-4 py-8">
     <!-- Estados de Carga/Error Globales -->
-    <div v-if="isLoadingProducts || isLoadingCategories || isLoadingRate" class="text-center py-10 bg-black">
+    <div
+      v-if="isLoadingProducts || isLoadingCategories || isLoadingRate"
+      class="text-center py-10 bg-black"
+    >
       <p class="text-xl animate-pulse">Cargando Productos...</p>
       <!-- Puedes añadir un spinner SVG o un componente de spinner aquí -->
     </div>
@@ -99,7 +102,6 @@ const dataIsReady = computed(
     <div v-else-if="dataIsReady">
       <!-- Aquí irían los filtros y las estadísticas -->
       <DashboardStats :products="filteredProducts" />
-
       <ProductList :products="paginatedProducts" :exchange-rate="currentExchangeRate" />
 
       <AppPagination
