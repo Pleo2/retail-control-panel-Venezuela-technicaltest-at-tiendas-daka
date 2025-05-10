@@ -34,7 +34,7 @@ const averagePriceUSDFormatted = computed(() => {
 })
 
 const stats = computed(() => [
-  { label: 'Total de Productos', value: totalProducts.value },
+  { label: 'Total de Productos en la Categoria', value: totalProducts.value },
   { label: 'Categorías Únicas', value: uniqueCategoriesCount.value },
   { label: 'Precio Promedio (USD)', value: averagePriceUSDFormatted.value },
 ])

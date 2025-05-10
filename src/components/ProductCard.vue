@@ -25,14 +25,23 @@ const priceUSDFormatted = computed(() => {
 
 <template>
   <div
-    class="bg-white/20 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col"
+    class="bg-white/20 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col hover:opacity-90 group cursor-pointer"
   >
-    <div class="bg-white opacity-80 rounded-lg relative w-full h-48 sm:h-56">
+    <div class="bg-white opacity-80 p-4 rounded-lg relative w-full h-48 sm:h-56">
       <img
         :src="product.imageUrl"
         :alt="product.title"
-        class="w-full h-full object-contain p-2"
+        class="w-full h-full object-contain p-2 group-hover:scale-[105%] transition-all duration-500 ease-out opacity-0 scale-90"
         loading="lazy"
+        @load="
+          (event) => {
+            const target = event.target as HTMLImageElement;
+            if (target) {
+              target.classList.remove('opacity-0', 'scale-90');
+              target.classList.add('opacity-100', 'scale-100');
+            }
+          }
+        "
         @error="
           (event) =>
             ((event.target as HTMLImageElement).src =
