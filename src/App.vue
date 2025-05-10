@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import './global.css'
 import { ref, computed, watch, onMounted } from 'vue'
 import { useProducts } from './composables/useProducts'
 import { useCategories } from './composables/useCategories'
@@ -92,15 +91,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container mx-auto px-4 py-8">
+  <div class="container p-4">
     <!-- Estados de Carga/Error Globales -->
-    <div
-      v-if="isLoadingProducts || isLoadingCategories || isLoadingRate"
-      class="text-center py-10 bg-black"
-    >
+    <div v-if="isLoadingProducts || isLoadingCategories || isLoadingRate" class="text-center py-10">
       <!-- <p class="text-xl animate-pulse">Cargando Productos...</p> -->
       <!-- Puedes añadir un spinner SVG o un componente de spinner aquí -->
     </div>
+
     <div
       v-else-if="productsError || categoriesError || rateError"
       class="text-center py-10 text-red-500"
@@ -111,21 +108,23 @@ onMounted(() => {
       <pre v-if="rateError">{{ rateError.message }}</pre>
     </div>
 
-    <div v-else-if="dataIsReady">
+    <div v-else-if="dataIsReady" class="flex flex-col gap-6">
       <DashboardStats :products="filteredProducts" />
-      <!-- SECCIÓN DE FILTROS -->
-      <div class="mb-6 p-4 bg-white rounded-lg shadow-md">
-        <h2 class="text-lg font-semibold text-gray-700 mb-3">Filtros</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-          <!-- Filtro por Categoría -->
-          <div>
-            <label for="category-filter" class="block text-sm font-medium text-gray-700 mb-1"
+      <!-- Filter Section -->
+      <section
+        class="flex flex-col gap-2 bg-white/10 border-1 border-white/10 p-2 rounded-lg shadow-md"
+      >
+        <h2 class="text-lg font-medium text-gray-200">Filtrar Productos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end bg-white/10 p-4 rounded-lg">
+          <!-- Categories -->
+          <div class="flex flex-col gap-1">
+            <label for="category-filter" class="block text-sm font-light text-gray-200"
               >Categoría:</label
             >
             <select
               id="category-filter"
               v-model="selectedCategory"
-              class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300  shadow-sm focus:bg-white/5  focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin"
               :disabled="isLoadingCategories"
             >
               <option value="">Todas las categorías</option>
@@ -135,7 +134,7 @@ onMounted(() => {
                   v-for="category in categories"
                   :key="category"
                   :value="category"
-                  class="capitalize"
+                  class="capitalize "
                 >
                   {{ category }}
                 </option>
@@ -143,9 +142,9 @@ onMounted(() => {
             </select>
           </div>
 
-          <!-- Filtro por Precio Mínimo -->
-          <div>
-            <label for="price-min-filter" class="block text-sm font-medium text-gray-700 mb-1"
+          <!-- min-price -->
+          <div class="flex flex-col gap-1">
+            <label for="price-min-filter" class="block text-sm font-light text-gray-200"
               >Precio Mín. (USD):</label
             >
             <input
@@ -154,13 +153,13 @@ onMounted(() => {
               v-model.number="priceRangeMin"
               placeholder="Ej: 10"
               min="0"
-              class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300  shadow-sm focus:bg-white/5  focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin"
             />
           </div>
 
-          <!-- Filtro por Precio Máximo -->
-          <div>
-            <label for="price-max-filter" class="block text-sm font-medium text-gray-700 mb-1"
+          <!-- max price -->
+          <div class="flex flex-col gap-1">
+            <label for="price-max-filter" class="block text-sm font-light text-gray-200"
               >Precio Máx. (USD):</label
             >
             <input
@@ -169,11 +168,12 @@ onMounted(() => {
               v-model.number="priceRangeMax"
               placeholder="Ej: 100"
               min="0"
-              class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              class="appearance-none caret-indigo-200 w-full p-2 border border-gray-300  shadow-sm focus:bg-white/5  focus:outline-indigo-200 focus:outline-1 rounded-sm font-thin"
             />
           </div>
         </div>
-      </div>
+      </section>
+
       <Transition name="fade" mode="out-in">
         <ProductList
           :key="currentPage + selectedCategory + priceRangeMin + priceRangeMax"
@@ -191,4 +191,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-di

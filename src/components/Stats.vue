@@ -41,18 +41,18 @@ const stats = computed(() => [
 </script>
 
 <template>
-  <div class="bg-gray-50 p-4 rounded-lg shadow mb-6">
-    <h2 class="text-xl font-semibold text-gray-700 mb-3">Estadísticas del Tablero</h2>
+  <div class="bg-white/10 border-1 border-white/10 p-2 rounded-lg flex flex-col gap-2">
+    <h2 class="text-lg font-medium  text-white">Estadísticas</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div
         v-for="stat in stats"
         :key="stat.label"
-        class="bg-white p-4 rounded-lg shadow-md text-center md:text-left"
+        class="bg-white/10 p-4 rounded-lg shadow-md text-center md:text-left"
       >
-        <h3 class="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+        <h3 class="text-xs sm:text-sm font-medium text-gray-100 uppercase tracking-wider">
           {{ stat.label }}
         </h3>
-        <p class="mt-1 text-xl sm:text-2xl font-semibold text-indigo-600">{{ stat.value }}</p>
+        <p class="mt-1 text-xl sm:text-2xl font-semibold text-indigo-200">{{ stat.value }}</p>
       </div>
     </div>
   </div>

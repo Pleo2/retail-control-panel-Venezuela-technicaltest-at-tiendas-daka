@@ -25,9 +25,9 @@ const priceUSDFormatted = computed(() => {
 
 <template>
   <div
-    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col"
+    class="bg-white/20 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col"
   >
-    <div class="relative w-full h-48 sm:h-56">
+    <div class="bg-white rounded-lg relative w-full h-48 sm:h-56">
       <img
         :src="product.imageUrl"
         :alt="product.title"
@@ -41,17 +41,17 @@ const priceUSDFormatted = computed(() => {
       />
     </div>
     <div class="p-4 flex flex-col flex-grow">
-      <h3 class="text-lg font-semibold text-gray-800 mb-1 truncate" :title="product.title">
+      <h3 class="text-lg font-semibold text-white mb-1 truncate" :title="product.title">
         {{ product.title }}
       </h3>
-      <p class="text-sm text-gray-500 mb-2 capitalize">
+      <p class="text-sm text-white mb-2 capitalize">
         {{ product.category }}
       </p>
       <div class="mt-auto">
-        <p class="text-base font-bold text-blue-600">
+        <p class="text-base font-bold text-indigo-200">
           {{ priceUSDFormatted }}
         </p>
-        <p class="text-sm text-gray-700">
+        <p class="text-sm text-indigo-100">
           {{ priceVES }}
         </p>
       </div>
