@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+
+import { ref, computed, watch, onMounted } from 'vue'
 import { useProducts } from './composables/useProducts'
 import { useCategories } from './composables/useCategories'
 import { useExchangeRate } from './composables/useExchangeRate'
@@ -16,18 +17,24 @@ const {
   error: productsError,
   isSuccess: productsSuccess,
 } = useProducts()
+
 const {
   categories,
   isLoading: isLoadingCategories,
   error: categoriesError,
   isSuccess: categoriesSuccess,
 } = useCategories()
+
 const {
   exchangeRateInfo,
   isLoading: isLoadingRate,
   error: rateError,
   isSuccess: rateSuccess,
 } = useExchangeRate()
+
+const dataIsReady = computed(
+  () => productsSuccess.value && categoriesSuccess.value && rateSuccess.value,
+)
 
 const selectedCategory = ref<string>('')
 const priceRangeMin = ref<number | null>(null)
@@ -72,10 +79,16 @@ watch([selectedCategory, priceRangeMin, priceRangeMax], () => {
   currentPage.value = 1
 })
 
-// Para manejar el v-if en el template de forma más limpia
-const dataIsReady = computed(
-  () => productsSuccess.value && categoriesSuccess.value && rateSuccess.value,
-)
+watch(selectedCategory, (newVal) => {
+  localStorage.setItem('preferredCategory', newVal)
+})
+
+onMounted(() => {
+  const savedCategory = localStorage.getItem('preferredCategory')
+  if (savedCategory) {
+    selectedCategory.value = savedCategory
+  }
+})
 </script>
 
 <template>
