@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Product } from '../core/infrastructure/interfaces/app/app.types'
-import ProductCard from './ProductCard.vue'
+import type { Product } from '@/core/infrastructure/interfaces/app/app.types'
+import ProductCard from '@/components/ProductCard.vue'
 
 interface Props {
   products: Product[] | undefined // Puede ser undefined mientras carga
