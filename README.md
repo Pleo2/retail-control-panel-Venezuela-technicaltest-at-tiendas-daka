@@ -16,7 +16,7 @@ El tablero permite a los usuarios visualizar un listado de productos, aplicar fi
 ## Demo
 ### [Enlace a la Demo en Vivo Desplegada en vercel](https://retail-control-panel-venezuela-technicaltest-at-tiendas-daka.vercel.app/)
 
-![Captura de Pantalla de la Aplicación](https://pub-90297d0da7b2491c8e14926e02ec8e30.r2.dev/Screen%20Recording%202025-05-11%20at%203.51.48%E2%80%AFPM.gif)
+![Captura de Pantalla de la Aplicación](https://pub-90297d0da7b2491c8e14926e02ec8e30.r2.dev/gitdakatest.gif)
 
 ## Funcionalidades Implementadas
 
