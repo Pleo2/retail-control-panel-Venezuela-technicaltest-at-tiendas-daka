@@ -8,7 +8,7 @@ import { useExchangeRate } from '@/composables/useExchangeRate'
 import { useClientSideFilteringAndPagination } from '@/composables/useClientSideFilteringAndPagination'
 
 // types (Product is not necessary here if not used directly)
-// import type { Product } from './core/infrastructure/interfaces/app/app.types';
+// import type { Product } from '@/core/infrastructure/interfaces/app/app.types';
 
 // SPC
 import ProductFilters from '@/components/ProductFilters.vue'

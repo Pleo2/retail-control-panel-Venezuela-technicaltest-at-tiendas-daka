@@ -1,7 +1,7 @@
-import './global.css'
+import '@/global.css'
 
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from '@/App.vue'
 import { VueQueryPlugin, QueryClient } from '@tanstack/vue-query'
 
 const app = createApp(App)
