@@ -1,7 +1,7 @@
-import { fakeStoreApi } from '../api/fakeStoreApi'
-import type { ProductResponse } from '../infrastructure/interfaces/fakestore/products-response.types'
-import type { Product, Category } from '../infrastructure/interfaces/app/app.types'
-import { ProductMapper } from '../infrastructure/mappers/productMapper'
+import { fakeStoreApi } from '@/core/api/fakeStoreApi'
+import type { ProductResponse } from '@/core/infrastructure/interfaces/fakestore/products-response.types'
+import type { Product, Category } from '@/core/infrastructure/interfaces/app/app.types'
+import { ProductMapper } from '@/core/infrastructure/mappers/productMapper'
 
 export const fetchAllProducts = async (): Promise<Product[]> => {
   try {

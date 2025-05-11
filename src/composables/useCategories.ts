@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/vue-query'
-import { fetchCategories } from '../core/actions/ProductsAction.ts'
+import { fetchCategories } from '@/core/actions/ProductsAction.ts'
 
 export function useCategories() {
   const categoriesQuery = useQuery({

@@ -1,7 +1,7 @@
-import { exchangeRateApi } from '../api/exchangeRateApi'
-import type { ExchangeRateResponse } from '../infrastructure/interfaces/exchange-rate/exchange-rate-response.types'
-import type { ExchangeRateInfo } from '../infrastructure/interfaces/app/app.types'
-import { ExchangeRateMapper } from '../infrastructure/mappers/exchangeRateMapper'
+import { exchangeRateApi } from '@/core/api/exchangeRateApi'
+import type { ExchangeRateResponse } from '@/core/infrastructure/interfaces/exchange-rate/exchange-rate-response.types'
+import type { ExchangeRateInfo } from '@/core/infrastructure/interfaces/app/app.types'
+import { ExchangeRateMapper } from '@/core/infrastructure/mappers/exchangeRateMapper'
 
 export const fetchBcvRate = async (): Promise<ExchangeRateInfo | null> => {
   try {

@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/vue-query'
-import { fetchBcvRate } from '../core/actions/exchangeRateActions'
+import { fetchBcvRate } from '@/core/actions/exchangeRateActions'
 
 export function useExchangeRate() {
   const exchangeRateQuery = useQuery({
-    queryKey: ['exchangeRate', 'bcv'], // Más específico
+    queryKey: ['exchangeRate', 'bcv'],
     queryFn: fetchBcvRate,
   })
   return {

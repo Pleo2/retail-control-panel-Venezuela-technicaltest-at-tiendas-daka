@@ -1,5 +1,5 @@
-import type { ExchangeRateResponse } from '../interfaces/exchange-rate/exchange-rate-response.types'
-import type { ExchangeRateInfo } from '../interfaces/app/app.types'
+import type { ExchangeRateResponse } from '@/core/infrastructure/interfaces/exchange-rate/exchange-rate-response.types'
+import type { ExchangeRateInfo } from '@/core/infrastructure/interfaces/app/app.types'
 
 export class ExchangeRateMapper {
   static fromPyDolarToApp(apiResponse: ExchangeRateResponse): ExchangeRateInfo | null {

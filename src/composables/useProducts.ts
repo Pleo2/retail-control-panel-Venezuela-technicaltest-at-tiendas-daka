@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/vue-query'
-import { fetchAllProducts } from '../core/actions/ProductsAction'
+import { fetchAllProducts } from '@/core/actions/ProductsAction'
 
 export function useProducts() {
   const productsQuery = useQuery({

@@ -1,27 +1,27 @@
 import { ref, computed, watch, onMounted, type Ref } from 'vue'
-import type { Product } from '@/core/infrastructure/interfaces/app/app.types' // Asegúrate que la ruta sea correcta
+import type { Product } from '@/core/infrastructure/interfaces/app/app.types'
 
 interface UseClientFilteringAndPaginationOptions {
   rawProducts: Ref<Product[] | undefined>
   itemsPerPage?: number
-  initialCategoryFromStorage?: boolean // Para controlar si se carga de localStorage
+  initialCategoryFromStorage?: boolean // To control if loading from localStorage
 }
 
 export function useClientSideFilteringAndPagination(
   options: UseClientFilteringAndPaginationOptions,
 ) {
-  const { rawProducts, initialCategoryFromStorage = true } = options // default a true
+  const { rawProducts, initialCategoryFromStorage = true } = options // default to true
   const itemsPerPage = ref(options.itemsPerPage || 5)
 
-  // Estados para filtros
-  const selectedCategory = ref<string>('') // Se inicializará desde localStorage si initialCategoryFromStorage es true
+  // State for filters
+  const selectedCategory = ref<string>('') // Will be initialized from localStorage if initialCategoryFromStorage is true
   const priceRangeMin = ref<number | null>(null)
   const priceRangeMax = ref<number | null>(null)
 
-  // Estado para paginación
+  // State for pagination
   const currentPage = ref<number>(1)
 
-  // Lógica de LocalStorage para selectedCategory
+  // LocalStorage logic for selectedCategory
   if (initialCategoryFromStorage) {
     onMounted(() => {
       const savedCategory = localStorage.getItem('preferredCategory')
@@ -71,7 +71,7 @@ export function useClientSideFilteringAndPagination(
     return filteredProducts.value.slice(start, end)
   })
 
-  // Watch para resetear currentPage cuando los filtros cambian
+  // Watch to reset currentPage when filters change
   watch(
     [selectedCategory, priceRangeMin, priceRangeMax],
     () => {
@@ -80,14 +80,14 @@ export function useClientSideFilteringAndPagination(
       }
     },
     { deep: false },
-  ) // No necesitamos deep watch aquí
+  ) // Deep watch not needed here
 
-  // Watch para asegurar que currentPage no exceda totalPages
+  // Watch to ensure that currentPage does not exceed totalPages
   watch(totalPages, (newTotalPages, oldTotalPages) => {
     if (currentPage.value > newTotalPages && newTotalPages > 0) {
       currentPage.value = newTotalPages
     } else if (newTotalPages === 0 && oldTotalPages > 0) {
-      // Si no hay páginas, ir a 1
+      // If there are no pages, set to 1
       currentPage.value = 1
     }
   })
