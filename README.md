@@ -2,19 +2,21 @@
 
 # Tablero de Control para Retail (Venezuela) - Prueba Técnica Vue 3
 
+## Documentacion completa
+### [Enlace de la documentacion del proyecto](https://deepwiki.com/Pleo2/retail-control-panel-Venezuela-technicaltest-at-tiendas-daka/1-overview)
+
+![Captura de Pantalla de la Aplicación](https://pub-90297d0da7b2491c8e14926e02ec8e30.r2.dev/image.webp)
+
 ## Objetivo del Proyecto
 
 Este proyecto es una solución a la prueba técnica para desarrollar un tablero de control interactivo para una empresa de retail en Venezuela. La aplicación consume datos de productos de [FakeStoreAPI](https://fakestoreapi.com/) y tasas de cambio de [pyDolarVenezuela](https://pydolarve.org/) para presentar información relevante de manera clara y eficiente, incluyendo precios en USD y VES.
 
 El tablero permite a los usuarios visualizar un listado de productos, aplicar filtros por categoría y rango de precios, y observar estadísticas clave que se actualizan dinámicamente.
 
-## Demo (Opcional)
+## Demo
+### [Enlace a la Demo en Vivo Desplegada en vercel](https://retail-control-panel-venezuela-technicaltest-at-tiendas-daka.vercel.app/)
 
-*(Si despliegas el proyecto en Vercel, Netlify, GitHub Pages, etc., incluye un enlace aquí. Ejemplo:)*
-[Enlace a la Demo en Vivo](#) *(Reemplaza # con tu URL real)*
-
-*(También podrías incluir un GIF o una captura de pantalla mostrando la aplicación en acción)*
-![Captura de Pantalla de la Aplicación](placeholder-screenshot.png) *(Reemplaza con una imagen real)*
+![Captura de Pantalla de la Aplicación](https://pub-90297d0da7b2491c8e14926e02ec8e30.r2.dev/Screen%20Recording%202025-05-11%20at%203.51.48%E2%80%AFPM.gif)
 
 ## Funcionalidades Implementadas
 
