@@ -179,7 +179,7 @@ describe('App.vue (Main Application Component)', () => {
       await flushPromises()
 
       expect(wrapper.find('p.animate-bounce').exists()).toBe(true)
-      expect(wrapper.find('p.animate-bounce').text()).toBe('Loading Products...')
+      expect(wrapper.find('p.animate-bounce').text()).toBe('Cargando Productos...')
       expect(wrapper.findComponent(DashboardStats).exists()).toBe(false)
     })
 
@@ -219,7 +219,7 @@ describe('App.vue (Main Application Component)', () => {
       // The selector might need to be more specific if there are other `div.text-center > p` elements
       const waitingMessage = wrapper
         .findAll('div.text-center > p')
-        .find((p) => p.text() === 'Waiting for data to be ready...')
+        .find((p) => p.text() === 'Cargando...')
       expect(waitingMessage?.exists()).toBe(true)
       expect(wrapper.findComponent(DashboardStats).exists()).toBe(false)
     })
