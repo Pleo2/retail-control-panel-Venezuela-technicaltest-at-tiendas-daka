@@ -43,6 +43,7 @@ const isLastPage = computed(() => props.currentPage === props.totalPages)
     <ul class="flex items-center -space-x-px h-10 text-base">
       <li>
         <button
+          data-testid="prev-button"
           @click="onPageChange(currentPage - 1)"
           :disabled="isFirstPage"
           class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-dark-blue bg-white border border-white rounded-s-lg hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
@@ -93,6 +94,7 @@ const isLastPage = computed(() => props.currentPage === props.totalPages)
       <li>
         <button
           @click="onPageChange(currentPage + 1)"
+          data-testid="next-button"
           :disabled="isLastPage"
           class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-dark-blue bg-white border border-white rounded-e-lg hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           :class="{ 'cursor-not-allowed opacity-50': isLastPage }"
@@ -118,4 +120,3 @@ const isLastPage = computed(() => props.currentPage === props.totalPages)
     </ul>
   </nav>
 </template>
-

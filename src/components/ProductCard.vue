@@ -35,10 +35,10 @@ const priceUSDFormatted = computed(() => {
         loading="lazy"
         @load="
           (event) => {
-            const target = event.target as HTMLImageElement;
+            const target = event.target as HTMLImageElement
             if (target) {
-              target.classList.remove('opacity-0', 'scale-90');
-              target.classList.add('opacity-100', 'scale-100');
+              target.classList.remove('opacity-0', 'scale-90')
+              target.classList.add('opacity-100', 'scale-100')
             }
           }
         "
@@ -53,10 +53,12 @@ const priceUSDFormatted = computed(() => {
       <h3 class="text-lg font-semibold text-white mb-1 truncate" :title="product.title">
         {{ product.title }}
       </h3>
-      <p class="text-sm text-white border w-max px-2 py-1 rounded-lg border-white/50 bg-black/10 mb-2 capitalize">
+      <p
+        class="text-sm text-white border w-max px-2 py-1 rounded-lg border-white/50 bg-black/10 mb-2 capitalize"
+      >
         {{ product.category }}
       </p>
-      <div class="mt-auto flex gap-2 ">
+      <div class="mt-auto flex gap-2">
         <p class="text-base font-light text-dark-blue">
           {{ priceUSDFormatted }}
         </p>
