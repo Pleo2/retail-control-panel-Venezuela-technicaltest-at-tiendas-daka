@@ -7,7 +7,7 @@ import type { Product } from '@/core/infrastructure/interfaces/app/app.types'
 // Mock the currencyFormatter as its exact output is important here
 // If formatUSDCurrency is complex or has side effects, mocking is good.
 // If it's a pure function, you could also import and use it directly in expectations.
-vi.mock('../../lib/currencyFormatter', () => ({
+vi.mock('@/lib/currencyFormatter', () => ({
   // Adjust path to your currencyFormatter
   formatUSDCurrency: (value: number) => `$${value.toFixed(2)}`, // Simple mock for predictable output
 }))

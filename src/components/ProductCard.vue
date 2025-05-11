@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Product } from '../core/infrastructure/interfaces/app/app.types.ts' // Tu modelo de app
-import { formatVenezuelanCurrency, formatUSDCurrency } from '../lib/currencyFormatter'
+import type { Product } from '@/core/infrastructure/interfaces/app/app.types.ts' // Tu modelo de app
+import { formatVenezuelanCurrency, formatUSDCurrency } from '@/lib/currencyFormatter'
 
 interface Props {
   product: Product

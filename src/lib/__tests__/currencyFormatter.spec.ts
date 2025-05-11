@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest'
 
 // Import the functions to be tested
-import { formatVenezuelanCurrency, formatUSDCurrency } from '../currencyFormatter' // Adjust path
+import { formatVenezuelanCurrency, formatUSDCurrency } from '@/lib/currencyFormatter' // Adjust path
 
 describe('currencyFormatter.ts', () => {
   // Test Suite for formatVenezuelanCurrency
