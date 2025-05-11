@@ -53,14 +53,14 @@ const priceUSDFormatted = computed(() => {
       <h3 class="text-lg font-semibold text-white mb-1 truncate" :title="product.title">
         {{ product.title }}
       </h3>
-      <p class="text-sm text-white mb-2 capitalize">
+      <p class="text-sm text-white border w-max px-2 py-1 rounded-lg border-white/50 bg-black/10 mb-2 capitalize">
         {{ product.category }}
       </p>
-      <div class="mt-auto">
-        <p class="text-base font-bold text-indigo-200">
+      <div class="mt-auto flex gap-2 ">
+        <p class="text-base font-light text-dark-blue">
           {{ priceUSDFormatted }}
         </p>
-        <p class="text-sm text-indigo-100">
+        <p class="text-base text-indigo-100">
           {{ priceVES }}
         </p>
       </div>
