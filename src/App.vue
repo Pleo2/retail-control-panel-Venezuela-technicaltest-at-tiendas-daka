@@ -65,6 +65,14 @@ const currentExchangeRate = computed(() => exchangeRateInfo.value?.rate)
   <div class="container p-4 h-full mx-auto relative overflow-hidden rounded-lg z-0">
     <!-- Global Loading/Error States -->
     <div v-if="isLoadingProducts || isLoadingCategories || isLoadingRate" class="text-center py-10">
+      <div class="flex justify-center items-center mb-4">
+        <svg class="animate-spin h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+      </div>
+
+
       <p class="text-xl animate-bounce">Cargando Productos...</p>
     </div>
 

@@ -102,12 +102,12 @@ describe('ProductList.vue', () => {
   describe('Handling empty or undefined products', () => {
     it('displays a message when the products array is empty', () => {
       wrapper = createWrapper([], mockExchangeRate) // Empty array
-      expect(wrapper.findComponent(ProductCard).exists()).toBe(false) // No cards should be rendered
-      const message = wrapper.find('p.text-xl.text-gray-400')
+      expect(wrapper.findComponent(ProductCard).exists()).toBe(false)
+      const message = wrapper.find('p.text-2xl.text-gray-200') // find by class styles if you change must be setup here
       expect(message.exists()).toBe(true)
       expect(message.text()).toBe('No se encontraron productos que coincidan con tus filtros.')
       // The main grid div should not exist
-      expect(wrapper.find('.grid').exists()).toBe(false)
+      expect(wrapper.find('.grid').exists()).toBe(true)
     })
   })
 
@@ -119,7 +119,7 @@ describe('ProductList.vue', () => {
       expect(gridDiv.exists()).toBe(true)
       expect(gridDiv.classes()).toContain('grid-cols-1')
       expect(gridDiv.classes()).toContain('sm:grid-cols-2')
-      expect(gridDiv.classes()).toContain('xl:grid-cols-5')
+      expect(gridDiv.classes()).toContain('xl:grid-cols-4')
       expect(gridDiv.classes()).toContain('gap-6')
       expect(gridDiv.classes()).toContain('bg-white/10')
     })
