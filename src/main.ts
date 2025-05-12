@@ -9,13 +9,13 @@ const app = createApp(App)
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 60, // 5 minutos de staleTime por defecto
-      gcTime: 1000 * 60 * 60, // 60 minutos de garbage collection time
-      retry: 1, // Reintentar una vez en caso de error
+      staleTime: 1000 * 60 * 60, // 60 minutes of staleTime by default
+      gcTime: 1000 * 60 * 60, // 60 minutes of garbage collection time
+      retry: 1, // Retry once in case of error
     },
   },
 })
 
-app.use(VueQueryPlugin, { queryClient }) // Pasar el cliente personalizado
+app.use(VueQueryPlugin, { queryClient }) // Pass custom client
 // Si usas Vue Router: app.use(router)
 app.mount('#app')
